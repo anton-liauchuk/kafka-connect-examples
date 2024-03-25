@@ -1,5 +1,5 @@
 [versions]
-kafkaConnect="7.5.1-ccs"
+kafkaConnect="7.6.0-ccs"
 javaxWsRsApi = "2.1.1"
 jerseyCommon = "2.39.1"
 assertj = "3.24.2"
