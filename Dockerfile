@@ -1,4 +1,4 @@
-ARG CONFLUENT_VERSION=7.5.2
+ARG CONFLUENT_VERSION=7.6.0
 
 FROM amazoncorretto:11 as build
 COPY . /project
