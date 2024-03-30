@@ -1,4 +1,7 @@
-# Custom REST Extension
+# Kafka Connect examples
+This repository contains a collection of example configurations, connectors, transformations, and utilities for Kafka Connect. 
+
+## Custom REST Extension
 A custom REST extension is available in the `kafka-connect-rest` module. This implementation uses a random UUID generator as a source of identifiers for connectors. In `docker-compose.yaml` this extension is already enabled.
 
 An example of using this endpoint:

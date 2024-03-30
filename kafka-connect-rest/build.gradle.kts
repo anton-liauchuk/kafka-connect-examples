@@ -1,6 +1,5 @@
 plugins {
     java
-    alias(libs.plugins.shadow)
 }
 
 group = "com.uuidable"
