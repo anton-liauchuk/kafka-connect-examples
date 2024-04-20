@@ -1,0 +1,10 @@
+{
+    "connector.class": "io.confluent.kafka.connect.datagen.DatagenConnector",
+    "name": "connector-1",
+    "quickstart": "pageviews",
+    "tasks.max": "1",
+    "kafka.topic": "pageviews",
+    "iterations": "10",
+    "transforms": "MessageTransformation",
+    "transforms.MessageTransformation.type": "com.uuidable.transformation.MessageTransformation"
+}
