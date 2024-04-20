@@ -5,7 +5,6 @@ COPY . /project
 WORKDIR /project
 RUN ./gradlew clean build shadowJar
 
-ARG JDBC_VERSION=10.7.4
 FROM confluentinc/cp-kafka-connect-base:${CONFLUENT_VERSION}
 
 RUN confluent-hub install --no-prompt confluentinc/kafka-connect-jdbc:10.7.4
