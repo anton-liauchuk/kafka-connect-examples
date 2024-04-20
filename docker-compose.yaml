@@ -59,3 +59,30 @@ services:
       CLASSPATH: /usr/share/java/rest/*
       CONNECT_PLUGIN_PATH: "/usr/share/java,/usr/share/confluent-hub-components"
       CONNECT_LOG4J_LOGGERS: org.apache.zookeeper=ERROR,org.I0Itec.zkclient=ERROR,org.reflections=ERROR
+
+  kafka-ui:
+    image: provectuslabs/kafka-ui:v0.7.1
+    hostname: kafka-ui
+    container_name: kafka-ui
+    depends_on:
+      - zookeeper
+      - broker
+    ports:
+      - "8080:8080"
+    environment:
+      KAFKA_CLUSTERS_0_NAME: "broker"
+      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: "broker:29092"
+      KAFKA_CLUSTERS_0_ZOOKEEPER: "zookeeper:2181"
+      KAFKA_CLUSTERS_0_KAFKACONNECT_0_NAME: "kafka connect"
+      KAFKA_CLUSTERS_0_KAFKACONNECT_0_ADDRESS: "http://connect:8083"
+
+  connect-ui:
+    image: landoop/kafka-connect-ui:0.9.7
+    hostname: connect-ui
+    container_name: connect-ui
+    ports:
+      - "8000:8000"
+    environment:
+      CONNECT_URL: "connect:8083"
+    depends_on:
+      - connect
