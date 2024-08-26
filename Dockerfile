@@ -1,6 +1,6 @@
-ARG CONFLUENT_VERSION=7.6.0
+ARG CONFLUENT_VERSION=7.7.0
 
-FROM amazoncorretto:11 as build
+FROM amazoncorretto:17 as build
 COPY . /project
 WORKDIR /project
 RUN ./gradlew clean build shadowJar
