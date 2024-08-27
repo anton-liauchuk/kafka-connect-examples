@@ -19,4 +19,4 @@ GET http://127.0.0.1:8083/meta
 Accept: application/json
 ```
 
-This and other http requests are placed in `rest.http`.
+This and other http requests are placed in `/requests/rest.http`.
