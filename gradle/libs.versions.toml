@@ -5,6 +5,9 @@ jerseyCommon = "2.39.1"
 assertj = "3.24.2"
 junit = "5.10.1"
 mockito = "5.7.0"
+httpClient = "5.2.1"
+testcontainers = "1.20.2"
+kafkaConnectJdbc = "10.8.0"
 
 [plugins]
 shadow = { id = "com.github.johnrengelman.shadow", version = "8.1.1" }
