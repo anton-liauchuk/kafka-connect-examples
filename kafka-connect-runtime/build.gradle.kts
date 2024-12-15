@@ -46,6 +46,8 @@ val integrationTest = task<Test>("integrationTest") {
     testLogging {
         events("passed")
     }
+
+    dependsOn(tasks.installDist)
 }
 
 tasks.check { dependsOn(integrationTest) }
@@ -53,8 +55,9 @@ tasks.check { dependsOn(integrationTest) }
 dependencies {
     implementation(project(":kafka-connect-rest"))
     implementation(project(":kafka-connect-transformation"))
+    implementation("io.confluent", "kafka-connect-jdbc", libs.versions.kafkaConnectJdbc.get())
 
-    integrationTestCompileOnly("org.apache.kafka", "connect-api", libs.versions.kafkaConnect.get())
+    integrationTestImplementation("org.apache.kafka", "connect-api", libs.versions.kafkaConnect.get())
     integrationTestCompileOnly("org.apache.kafka", "connect-runtime", libs.versions.kafkaConnect.get())
 
     integrationTestImplementation("org.junit.jupiter", "junit-jupiter-api", libs.versions.junit.get())
@@ -68,6 +71,7 @@ dependencies {
     integrationTestImplementation("org.testcontainers", "postgresql", libs.versions.testcontainers.get())
     integrationTestImplementation("org.apache.httpcomponents.client5", "httpclient5", libs.versions.httpClient.get())
     integrationTestImplementation("org.apache.kafka", "kafka-clients", libs.versions.kafkaConnect.get())
+    integrationTestImplementation("com.fasterxml.jackson.core", "jackson-databind", libs.versions.jacksonDatabind.get())
 }
 
 distributions {
