@@ -1,13 +1,14 @@
-ARG CONFLUENT_VERSION=7.7.0
+ARG CONFLUENT_VERSION=8.3.2
 
 FROM amazoncorretto:17 as build
 COPY . /project
 WORKDIR /project
-RUN ./gradlew clean build shadowJar
+RUN yum install -y findutils && yum clean all
+RUN ./gradlew clean build -x integrationTest shadowJar
 
 FROM confluentinc/cp-kafka-connect-base:${CONFLUENT_VERSION}
 
-RUN confluent-hub install --no-prompt confluentinc/kafka-connect-jdbc:10.7.4
+RUN confluent-hub install --no-prompt confluentinc/kafka-connect-jdbc:10.9.6
 RUN confluent-hub install --no-prompt confluentinc/kafka-connect-datagen:latest
 
 RUN mkdir /usr/share/java/rest

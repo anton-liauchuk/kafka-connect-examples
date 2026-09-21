@@ -19,15 +19,16 @@ repositories {
 }
 
 dependencies {
-    compileOnly("org.apache.kafka", "connect-api", libs.versions.kafkaConnect.get())
-    compileOnly("javax.ws.rs", "javax.ws.rs-api", libs.versions.javaxWsRsApi.get())
+    compileOnly(libs.connect.api)
+    compileOnly(libs.jakarta.ws.rs.api)
 
-    testImplementation("org.glassfish.jersey.core", "jersey-common", libs.versions.jerseyCommon.get())
-    testImplementation("org.junit.jupiter", "junit-jupiter-engine", libs.versions.junit.get())
-    testImplementation("org.junit.jupiter", "junit-jupiter-params", libs.versions.junit.get())
-    testImplementation("org.mockito", "mockito-core", libs.versions.mockito.get())
-    testImplementation("org.mockito", "mockito-junit-jupiter", libs.versions.mockito.get())
-    testImplementation("org.assertj", "assertj-core", libs.versions.assertj.get())
+    testImplementation(libs.jersey.common)
+    testRuntimeOnly(libs.junit.platform.launcher)
+    testImplementation(libs.junit.jupiter.engine)
+    testImplementation(libs.junit.jupiter.params)
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.mockito.junit.jupiter)
+    testImplementation(libs.assertj.core)
 }
 
 configurations {

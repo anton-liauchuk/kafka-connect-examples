@@ -20,8 +20,8 @@ repositories {
 }
 
 dependencies {
-    compileOnly("org.apache.kafka", "connect-api", libs.versions.kafkaConnect.get())
-    compileOnly("org.apache.kafka", "connect-transforms", libs.versions.kafkaConnect.get())
+    compileOnly(libs.connect.api)
+    compileOnly(libs.connect.transforms)
 }
 
 tasks.test {

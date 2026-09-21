@@ -22,7 +22,7 @@ import org.testcontainers.utility.DockerImageName;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
-import com.github.dockerjava.zerodep.shaded.org.apache.hc.core5.http.HttpStatus;
+import org.apache.hc.core5.http.HttpStatus;
 
 public class KafkaConnectContainer extends GenericContainer<KafkaConnectContainer> {
 

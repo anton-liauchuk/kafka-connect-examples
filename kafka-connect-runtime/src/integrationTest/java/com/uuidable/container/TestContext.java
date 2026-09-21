@@ -13,9 +13,9 @@ import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.testcontainers.containers.Network;
-import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.kafka.ConfluentKafkaContainer;
 import org.testcontainers.lifecycle.Startables;
+import org.testcontainers.postgresql.PostgreSQLContainer;
 import org.testcontainers.utility.DockerImageName;
 import org.testcontainers.utility.MountableFile;
 
@@ -29,8 +29,8 @@ public class TestContext {
 	private static final String POSTGRES_SOURCE_DB_NAME = "test";
 	private static final String LOCAL_INSTALL_DIR = "build/install/kafka-connect-runtime";
 	private static final String KC_PLUGIN_DIR = "/test/kafka-connect";
-	private static final String KAFKA_IMAGE = "confluentinc/cp-kafka:7.7.0";
-	private static final String CONNECT_IMAGE = "confluentinc/cp-kafka-connect:7.7.0";
+	private static final String KAFKA_IMAGE = "confluentinc/cp-kafka:8.3.2";
+	private static final String CONNECT_IMAGE = "confluentinc/cp-kafka-connect:8.3.2";
 	private static final String POSTGRES_SOURCE_INTERNAL_CONNECTION_URL = String.format(
 			"jdbc:postgresql://%s:%d/%s?loggerLevel=OFF",
 			POSTGRES_SOURCE_NETWORK_ALIAS,
@@ -40,14 +40,14 @@ public class TestContext {
 	private final Network network;
 	private final ConfluentKafkaContainer kafka;
 	private final KafkaConnectContainer kafkaConnect;
-	private final PostgreSQLContainer<?> postgres;
+	private final PostgreSQLContainer postgres;
 	private final CustomerService customerService;
 
 	private TestContext() {
 		network = Network.newNetwork();
 		kafka = new ConfluentKafkaContainer(DockerImageName.parse(KAFKA_IMAGE))
 				.withNetwork(network);
-		postgres = new PostgreSQLContainer<>(POSTGRES_IMAGE)
+		postgres = new PostgreSQLContainer(POSTGRES_IMAGE)
 				.withNetwork(network)
 				.withNetworkAliases(POSTGRES_SOURCE_NETWORK_ALIAS)
 				.withDatabaseName(POSTGRES_SOURCE_DB_NAME);

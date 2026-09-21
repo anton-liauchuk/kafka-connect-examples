@@ -55,23 +55,23 @@ tasks.check { dependsOn(integrationTest) }
 dependencies {
     implementation(project(":kafka-connect-rest"))
     implementation(project(":kafka-connect-transformation"))
-    implementation("io.confluent", "kafka-connect-jdbc", libs.versions.kafkaConnectJdbc.get())
+    implementation(libs.kafka.connect.jdbc)
 
-    integrationTestImplementation("org.apache.kafka", "connect-api", libs.versions.kafkaConnect.get())
-    integrationTestCompileOnly("org.apache.kafka", "connect-runtime", libs.versions.kafkaConnect.get())
+    integrationTestImplementation(libs.connect.api)
+    integrationTestCompileOnly(libs.connect.runtime)
 
-    integrationTestImplementation("org.junit.jupiter", "junit-jupiter-api", libs.versions.junit.get())
-    integrationTestImplementation("org.junit.jupiter", "junit-jupiter-engine", libs.versions.junit.get())
-    integrationTestImplementation("org.assertj", "assertj-core", libs.versions.assertj.get())
-    integrationTestImplementation("org.mockito", "mockito-junit-jupiter", libs.versions.mockito.get())
-    integrationTestImplementation("io.confluent", "kafka-connect-jdbc", libs.versions.kafkaConnectJdbc.get())
-    integrationTestImplementation("org.testcontainers", "toxiproxy", libs.versions.testcontainers.get())
-    integrationTestImplementation("org.testcontainers", "testcontainers", libs.versions.testcontainers.get())
-    integrationTestImplementation("org.testcontainers", "kafka", libs.versions.testcontainers.get())
-    integrationTestImplementation("org.testcontainers", "postgresql", libs.versions.testcontainers.get())
-    integrationTestImplementation("org.apache.httpcomponents.client5", "httpclient5", libs.versions.httpClient.get())
-    integrationTestImplementation("org.apache.kafka", "kafka-clients", libs.versions.kafkaConnect.get())
-    integrationTestImplementation("com.fasterxml.jackson.core", "jackson-databind", libs.versions.jacksonDatabind.get())
+    integrationTestImplementation(libs.junit.jupiter.api)
+    integrationTestImplementation(libs.junit.jupiter.engine)
+    integrationTestRuntimeOnly(libs.junit.platform.launcher)
+    integrationTestImplementation(libs.assertj.core)
+    integrationTestImplementation(libs.mockito.junit.jupiter)
+    integrationTestImplementation(libs.kafka.connect.jdbc)
+    integrationTestImplementation(libs.testcontainers)
+    integrationTestImplementation(libs.testcontainers.kafka)
+    integrationTestImplementation(libs.testcontainers.postgresql)
+    integrationTestImplementation(libs.httpclient5)
+    integrationTestImplementation(libs.kafka.clients)
+    integrationTestImplementation(libs.jackson.databind)
 }
 
 distributions {
