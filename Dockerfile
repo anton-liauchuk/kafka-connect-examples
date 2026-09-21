@@ -1,6 +1,6 @@
 ARG CONFLUENT_VERSION=8.3.2
 
-FROM amazoncorretto:17 as build
+FROM amazoncorretto:25 as build
 COPY . /project
 WORKDIR /project
 RUN yum install -y findutils && yum clean all

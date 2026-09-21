@@ -5,9 +5,10 @@ plugins {
 group = "com.uuidable"
 version = "1.0-SNAPSHOT"
 
-configure<JavaPluginExtension> {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(25)
+    }
 }
 
 repositories {
